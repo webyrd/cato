@@ -62,3 +62,18 @@
 (run 1 (q) (catwalko '(1 (2) dip) q)) ; => '((1 2))
 
 (run 5 (q) (catwalko q '(1 1)))
+
+(run 1 (q) (catwalko q q))
+
+(run 1 (q)
+  (fresh (queue out)
+    (== `(,q call) queue)
+    (catwalko queue q)))
+
+(run 1 (q)
+  (fresh (queue out a d stack)
+    (== `(,a . ,d) q)
+    (== `(,q call) queue)
+    (== `(,q) stack)
+    (catwalko queue stack)))
+
