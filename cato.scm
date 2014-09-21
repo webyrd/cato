@@ -31,6 +31,10 @@
            (== `(,a . ,d) stack)
            (== `(,d ,res) out)
            (appendo a queue res)))
+        ((== 'cons word)
+         (fresh (a d first rest)
+           (== `(,first (,a . ,d) . ,rest) stack)
+           (== `(((,first ,a . ,d) . ,rest) ,queue) out)))
         ((== 'drop word)
          (fresh (a d)
            (== `(,a . ,d) stack)
@@ -60,6 +64,21 @@
 (run 1 (q) (catwalko '((1) call) q)) ; => '((1))
 (run 1 (q) (catwalko '(1 drop) q)) ; => '(())
 (run 1 (q) (catwalko '(1 (2) dip) q)) ; => '((1 2))
+(run 1 (q) (catwalko '((1) 2 cons) q)) ; => (((2 1)))
+
+(run 1 (q) (catwalko '((dup cons) dup cons) q)) ; => ((((dup cons) dup cons)))
+(run 1 (q) (catwalko q '(((dup cons) dup cons)))) ; => ((((dup cons) dup cons)))
+
+(run 1 (q)
+  (fresh (queue out a d stack)
+    (== `(,a . ,d) q)
+    (== `(,q call) queue)
+    (== `(,q) stack)
+    (catwalko queue stack)))
+; generated a quine!
+;
+; => (((dup cons) dup cons))
+
 
 (run 5 (q) (catwalko q '(1 1)))
 
@@ -70,10 +89,11 @@
     (== `(,q call) queue)
     (catwalko queue q)))
 
+#!eof
+
 (run 1 (q)
   (fresh (queue out a d stack)
     (== `(,a . ,d) q)
     (== `(,q call) queue)
     (== `(,q) stack)
     (catwalko queue stack)))
-
