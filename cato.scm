@@ -91,6 +91,7 @@
 
 
 
+
 (run 5 (q) (catwalko q '(1 1)))
 
 (run 1 (q) (catwalko q q))
@@ -99,12 +100,3 @@
   (fresh (queue out)
     (== `(,q call) queue)
     (catwalko queue q)))
-
-#!eof
-
-(run 1 (q)
-  (fresh (queue out a d stack)
-    (== `(,a . ,d) q)
-    (== `(,q call) queue)
-    (== `(,q) stack)
-    (catwalko queue stack)))
