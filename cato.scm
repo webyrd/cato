@@ -59,14 +59,14 @@
            (== `(,s/q-a ,s/q-ad) stack/queue)
            (loop s/q-a s/q-ad)))))))
 
-(run 1 (q) (catwalko '(1 dup) q)) ; => ((1 1))
-(run 1 (q) (catwalko '(1 2 swap) q)) ; => ((1 2))
-(run 1 (q) (catwalko '((1) call) q)) ; => '((1))
-(run 1 (q) (catwalko '(1 drop) q)) ; => '(())
-(run 1 (q) (catwalko '(1 (2) dip) q)) ; => '((1 2))
-(run 1 (q) (catwalko '((1) 2 cons) q)) ; => (((2 1)))
+(run* (q) (catwalko '(1 dup) q)) ; => ((1 1))
+(run* (q) (catwalko '(1 2 swap) q)) ; => ((1 2))
+(run* (q) (catwalko '((1) call) q)) ; => '((1))
+(run* (q) (catwalko '(1 drop) q)) ; => '(())
+(run* (q) (catwalko '(1 (2) dip) q)) ; => '((1 2))
+(run* (q) (catwalko '((1) 2 cons) q)) ; => (((2 1)))
 
-(run 1 (q) (catwalko '((dup cons) dup cons) q)) ; => ((((dup cons) dup cons)))
+(run* (q) (catwalko '((dup cons) dup cons) q)) ; => ((((dup cons) dup cons)))
 (run 1 (q) (catwalko q '(((dup cons) dup cons)))) ; => ((((dup cons) dup cons)))
 
 (run 1 (q)
