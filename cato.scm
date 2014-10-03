@@ -79,6 +79,17 @@
 ;
 ; => (((dup cons) dup cons))
 
+;; shorter, equivalent version of the
+;; quine-generating query
+(run 1 (q)
+  (fresh (a d)
+    (== `(,a . ,d) q)
+    (catwalko `(,q call) `(,q))))
+; generated a quine!
+;
+; => (((dup cons) dup cons))
+
+
 
 (run 5 (q) (catwalko q '(1 1)))
 
