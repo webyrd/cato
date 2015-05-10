@@ -70,7 +70,7 @@
 (run 1 (q) (catwalko q '(((dup cons) dup cons)))) ; => ((((dup cons) dup cons)))
 
 (run 1 (q)
-  (fresh (queue out a d stack)
+  (fresh (queue a d stack)
     (== `(,a . ,d) q)
     (== `(,q call) queue)
     (== `(,q) stack)
