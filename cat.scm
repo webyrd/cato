@@ -37,6 +37,24 @@
          (let ((stack/queue (step stack queue)))
            (loop (car stack/queue) (cadr stack/queue))))))))
 
+(define run-print
+  (lambda args
+    (let loop ((stack '())
+               (queue args))
+      (cond
+        ((null? queue)
+         (printf "stack: ~s\n" stack)
+         (printf "queue: ~s\n" queue)
+         (printf "----------------\n")
+         stack)
+        (else
+         (printf "stack: ~s\n" stack)
+         (printf "queue: ~s\n" queue)
+         (printf "----------------\n")
+         (let ((stack/queue (step stack queue)))
+           (loop (car stack/queue) (cadr stack/queue))))))))
+
+
 (run 1 dup)
 (run 1 2 swap)
 (run '(1) call)
