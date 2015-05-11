@@ -12,6 +12,12 @@ Useful resources on concatenative programming:
 Why Concatenative Programming Matters
 http://evincarofautumn.blogspot.com/search/label/Concatenative
 
+Concatenative Clojure
+http://www.infoq.com/presentations/concatenative-clojure
+
+pesto5: A concatenative programming library in 5 lines of Clojure
+http://blog.fogus.me/2013/01/06/pesto5-a-concatenative-programming-library-in-5-lines-of-clojure/
+
 Wikipedia article on concatenative languages
 http://en.wikipedia.org/wiki/Concatenative_programming_language
 
