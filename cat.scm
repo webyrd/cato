@@ -1,3 +1,10 @@
+(define add
+  (lambda (stack queue)
+    (let ((n (car stack))
+          (m (cadr stack)))
+      (let ((sum (+ n m)))
+        `((,sum . ,(cddr stack)) ,queue)))))
+
 (define dup
   (lambda (stack queue)
     `((,(car stack) . ,stack) ,queue)))
